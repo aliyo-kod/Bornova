@@ -1,0 +1,121 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-body);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: 0;
+}
+
+body.has-mobile-cta {
+  padding-bottom: 64px;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--color-navy-800);
+  margin: 0;
+}
+
+p { margin: 0; }
+
+button { font: inherit; cursor: pointer; }
+
+.container-xl {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.icon-sm { width: 16px; height: 16px; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+  white-space: nowrap;
+}
+.btn svg { width: 18px; height: 18px; }
+.btn:hover { transform: translateY(-1px); }
+
+.btn-lg { padding: 14px 26px; font-size: 1rem; }
+
+.btn-primary {
+  background: var(--color-blue-500);
+  color: var(--color-white);
+}
+.btn-primary:hover { background: var(--color-blue-600); }
+
+.btn-navy {
+  background: var(--color-navy-900);
+  color: var(--color-white);
+}
+.btn-navy:hover { background: var(--color-navy-800); }
+
+.btn-outline-white {
+  background: transparent;
+  border-color: rgba(255,255,255,.6);
+  color: var(--color-white);
+}
+.btn-outline-white:hover { background: rgba(255,255,255,.12); }
+
+.btn-outline-navy {
+  background: transparent;
+  border-color: var(--color-navy-700);
+  color: var(--color-navy-800);
+}
+.btn-outline-navy:hover { background: var(--color-navy-800); color: var(--color-white); }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.section-head h2 {
+  font-size: 1.5rem;
+  letter-spacing: .02em;
+}
+.section-head__link {
+  font-weight: 700;
+  color: var(--color-blue-600);
+  white-space: nowrap;
+}

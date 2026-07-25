@@ -1,0 +1,110 @@
+.services {
+  background: var(--color-gray-50);
+  padding-block: 60px;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--color-white);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-lg);
+}
+
+.service-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.service-card__icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.service-card__icon .icon { width: 20px; height: 20px; }
+.service-card__title {
+  font-size: 1rem;
+  letter-spacing: .01em;
+}
+
+.service-card__image {
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.service-card__image-icon { width: 30%; height: 30%; color: rgba(255,255,255,.5); }
+
+.service-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.service-card__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+.service-card__list .icon { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+.service-card__btn {
+  width: 100%;
+  color: var(--color-white);
+}
+
+/* Category color variants */
+.service-card--blue .service-card__icon, .service-card--blue .service-card__title { color: var(--color-cat-blue); }
+.service-card--blue .service-card__icon { background: color-mix(in srgb, var(--color-cat-blue) 12%, white); }
+.service-card--blue .service-card__image { background: linear-gradient(135deg, var(--color-cat-blue), var(--color-cat-blue-dark)); }
+.service-card--blue .service-card__list .icon { color: var(--color-cat-blue); }
+.service-card--blue .service-card__btn { background: var(--color-cat-blue); }
+.service-card--blue .service-card__btn:hover { background: var(--color-cat-blue-dark); }
+
+.service-card--green .service-card__icon, .service-card--green .service-card__title { color: var(--color-cat-green); }
+.service-card--green .service-card__icon { background: color-mix(in srgb, var(--color-cat-green) 12%, white); }
+.service-card--green .service-card__image { background: linear-gradient(135deg, var(--color-cat-green), var(--color-cat-green-dark)); }
+.service-card--green .service-card__list .icon { color: var(--color-cat-green); }
+.service-card--green .service-card__btn { background: var(--color-cat-green); }
+.service-card--green .service-card__btn:hover { background: var(--color-cat-green-dark); }
+
+.service-card--orange .service-card__icon, .service-card--orange .service-card__title { color: var(--color-cat-orange); }
+.service-card--orange .service-card__icon { background: color-mix(in srgb, var(--color-cat-orange) 12%, white); }
+.service-card--orange .service-card__image { background: linear-gradient(135deg, var(--color-cat-orange), var(--color-cat-orange-dark)); }
+.service-card--orange .service-card__list .icon { color: var(--color-cat-orange); }
+.service-card--orange .service-card__btn { background: var(--color-cat-orange); }
+.service-card--orange .service-card__btn:hover { background: var(--color-cat-orange-dark); }
+
+.service-card--purple .service-card__icon, .service-card--purple .service-card__title { color: var(--color-cat-purple); }
+.service-card--purple .service-card__icon { background: color-mix(in srgb, var(--color-cat-purple) 12%, white); }
+.service-card--purple .service-card__image { background: linear-gradient(135deg, var(--color-cat-purple), var(--color-cat-purple-dark)); }
+.service-card--purple .service-card__list .icon { color: var(--color-cat-purple); }
+.service-card--purple .service-card__btn { background: var(--color-cat-purple); }
+.service-card--purple .service-card__btn:hover { background: var(--color-cat-purple-dark); }
+
+@media (max-width: 1439px) and (min-width: 768px) {
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .services { padding-block: 40px; }
+  .services__grid { grid-template-columns: 1fr; }
+}

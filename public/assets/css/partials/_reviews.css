@@ -1,0 +1,89 @@
+.reviews {
+  padding-block: 64px;
+  background: var(--color-white);
+}
+
+.reviews__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.reviews__heading h2 { font-size: 1.4rem; }
+
+.reviews__google-g {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: conic-gradient(from 90deg, #4285F4 0deg 90deg, #34A853 90deg 180deg, #FBBC05 180deg 270deg, #EA4335 270deg 360deg);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.reviews__google-g--sm { width: 18px; height: 18px; font-size: 0.65rem; }
+
+.reviews__verified-badge { color: var(--color-cat-green); display: inline-flex; }
+.reviews__verified-badge .icon { width: 20px; height: 20px; }
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.review-card {
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+}
+
+.review-card__head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.review-card__avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--color-blue-100);
+  color: var(--color-blue-600);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  flex-shrink: 0;
+}
+.review-card__name { font-weight: 700; font-size: 0.92rem; color: var(--color-navy-900); }
+.review-card__time { font-size: 0.75rem; color: var(--color-gray-500); }
+
+.review-card__stars { display: flex; gap: 2px; margin-bottom: 10px; }
+.review-card__stars .icon { width: 15px; height: 15px; color: #FBBC05; }
+
+.review-card__text {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--color-text-body);
+  margin-bottom: 14px;
+}
+
+.review-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-blue-600);
+}
+
+.reviews__cta { display: flex; justify-content: center; }
+
+@media (max-width: 1023px) {
+  .reviews__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 575px) {
+  .reviews__grid { grid-template-columns: 1fr; }
+  .reviews { padding-block: 44px; }
+}

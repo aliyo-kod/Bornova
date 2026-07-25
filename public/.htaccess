@@ -1,0 +1,5 @@
+# Phase 1 placeholder. Phase 2 adds real rewrite rules routing all
+# non-file/non-directory requests to index.php once routes/web.php exists.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+</IfModule>

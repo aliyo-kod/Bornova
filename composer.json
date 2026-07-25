@@ -1,0 +1,17 @@
+{
+    "name": "aliyo-kod/bornova-su-kacak-tespiti",
+    "description": "Bornova Su Kaçak Tespiti - PHP/MySQL kurumsal site ve yönetim paneli",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Support/helpers.php"
+        ]
+    }
+}

@@ -1,0 +1,51 @@
+:root {
+  /* Brand navy */
+  --color-navy-900: #0b1830;
+  --color-navy-800: #0f1f3d;
+  --color-navy-700: #16305c;
+  --color-navy-600: #1c3d73;
+
+  /* Accent blue */
+  --color-blue-500: #2f6fed;
+  --color-blue-600: #1f5bd6;
+  --color-blue-100: #e8f0ff;
+
+  /* Category colors */
+  --color-cat-blue: #2f6fed;
+  --color-cat-blue-dark: #1f5bd6;
+  --color-cat-green: #1fa35b;
+  --color-cat-green-dark: #17864a;
+  --color-cat-orange: #f2892e;
+  --color-cat-orange-dark: #d9701a;
+  --color-cat-purple: #7c4fd6;
+  --color-cat-purple-dark: #6438b8;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-gray-50: #f7f9fc;
+  --color-gray-100: #eef1f6;
+  --color-gray-200: #e2e6ee;
+  --color-gray-300: #cdd4e0;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-text-body: #2b3648;
+
+  /* Surface / elevation */
+  --card-border-color: var(--color-gray-200);
+  --card-radius: 14px;
+  --card-radius-lg: 18px;
+  --card-shadow: 0 6px 20px rgba(15, 31, 61, 0.08);
+  --card-shadow-lg: 0 12px 32px rgba(15, 31, 61, 0.12);
+
+  /* Typography */
+  --font-heading: 'Manrope', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Layout */
+  --container-max: 1440px;
+  --header-height: 88px;
+  --header-height-scrolled: 68px;
+  --topbar-height: 40px;
+
+  /* Breakpoints (referenced in comments; actual queries hardcoded per CSS spec) */
+}

@@ -12,7 +12,9 @@
         },
         "files": [
             "app/Support/env.php",
-            "app/Support/helpers.php"
+            "app/Support/helpers.php",
+            "app/Support/seo.php",
+            "app/Support/csrf.php"
         ]
     }
 }

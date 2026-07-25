@@ -156,3 +156,24 @@ $router->get('/sitenin-kullanici-sozlesmesi', function () {
     $page = $page->toArray();
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
+
+// SEO Routes (Phase 4)
+// Sitemap
+$router->get('/sitemap.xml', function () {
+    header('Content-Type: application/xml; charset=utf-8');
+    $baseUrl = env('APP_URL', 'http://localhost:8000');
+    $generator = new \App\Support\SitemapGenerator($baseUrl);
+    echo $generator->generate();
+    exit;
+});
+
+// Robots.txt
+$router->get('/robots.txt', function () {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "User-agent: *\n";
+    echo "Allow: /\n";
+    echo "Disallow: /admin/\n";
+    echo "Disallow: /api/\n\n";
+    echo "Sitemap: " . env('APP_URL', 'http://localhost:8000') . "/sitemap.xml\n";
+    exit;
+});

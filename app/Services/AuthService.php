@@ -11,17 +11,31 @@ class AuthService
 
     public static function login(string $email, string $password, bool $remember = false): bool
     {
-        $user = User::findByEmail($email);
+        // Rate limiting: max 5 attempts per 15 minutes
+        $rateLimiter = new \App\Support\RateLimiter();
+        $key = 'login_' . md5($email);
 
-        if (!$user || !$user->verifyPassword($password)) {
+        if (!$rateLimiter->check($key, 5, 15)) {
+            \App\Models\LoginLog::log(0, false, 'Rate limit exceeded');
             return false;
         }
 
-        if (!$user->attributes['is_active'] ?? false) {
+        $user = User::findByEmail($email);
+
+        if (!$user || !$user->verifyPassword($password)) {
+            \App\Models\LoginLog::log($user ? $user->attributes['id'] : 0, false, 'Invalid credentials');
+            return false;
+        }
+
+        if (!($user->attributes['is_active'] ?? false)) {
+            \App\Models\LoginLog::log($user->attributes['id'], false, 'Account inactive');
             return false;
         }
 
         self::startSession($user, $remember);
+        \App\Models\LoginLog::log($user->attributes['id'], true);
+        \App\Models\ActivityLog::log('login', $user->attributes['id']);
+        $rateLimiter->reset($key);
         return true;
     }
 

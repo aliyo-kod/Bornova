@@ -11,6 +11,7 @@
             "App\\": "app/"
         },
         "files": [
+            "app/Support/env.php",
             "app/Support/helpers.php"
         ]
     }

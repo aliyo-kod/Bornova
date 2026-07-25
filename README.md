@@ -2,25 +2,57 @@
 
 Kurumsal tanıtım sitesi + yönetim paneli projesi. Bu depo aşamalı olarak geliştirilmektedir.
 
-## Mevcut Durum: Faz 1 — Anasayfa Ön Yüzü
+## Mevcut Durum: Faz 2 — Veritabanı & Yönlendirme Altyapısı
 
-Şu anda yalnızca **anasayfanın masaüstü ve mobil ön yüzü** tamamlanmıştır. İçerikler
-`app/Data/*.php` altında düz PHP dizileri olarak tutulmaktadır; bu diziler Faz 2'de
-veritabanından gelecek verilerle aynı şekle sahiptir, böylece görünüm dosyaları
-yeniden yazılmadan veri kaynağı değiştirilebilecektir.
+**Faz 1** (Anasayfa Ön Yüzü) tamamlandı ve push edildi.
 
-Henüz **yapılmayanlar** (sıradaki fazlar): MySQL veritabanı ve PDO bağlantısı, iç
-sayfalar/route yönlendirme, yönetim paneli, CRM, Google araçları/Ads entegrasyonu,
-SEO otomasyonu (sitemap/robots/schema), form gönderimi ve e-posta bildirimleri,
+**Faz 2** ek sayfalar ve veritabanı entegrasyonu sunmaktadır:
+- MySQL 8 schema (~35 tablo) ile PDO bağlantısı
+- Router sınıfı ve routes/web.php yönlendirmesi
+- Model sınıfları (HeroSlider, Service, Review, Video, Post, Faq, Region, Page, SiteConfig vb.)
+- Modeller `toArray()` metodu üzerinden Faz 1 veri dizileriyle aynı şekle dönüştürür, bu nedenle görünümler değiştirilmez
+- Hala Faz 1 `app/Data/*.php` dizilerine sahiptir, bunlar veritabanı bağlantısı başarısız olursa fallback olarak kullanılır
+
+Henüz **yapılmayanlar** (sıradaki fazlar): Yönetim paneli ve kimlik doğrulama, CRM lead pipeline,
+Google araçları/Ads entegrasyonu, SEO otomasyonu (sitemap/robots/schema), form gönderimi ve e-posta bildirimleri,
 güvenlik sertleştirmesi (CSRF, rate limiting vb.).
 
-## Çalıştırma (Faz 1)
+## Çalıştırma
 
-```bash
-php -S localhost:8000 -t public
-```
+### Kurulum (Faz 2)
 
-Tarayıcıda `http://localhost:8000` adresini açın.
+1. **Bağımlılıkları yükle:**
+   ```bash
+   composer install
+   ```
+
+2. **Ortam değişkenlerini ayarla:**
+   ```bash
+   cp .env.example .env
+   # .env dosyasını MySQL kimlik bilgileriyle düzenle
+   ```
+
+3. **Veritabanını oluştur:**
+   ```bash
+   php database/setup.php
+   ```
+
+4. **Sunucuyu başlat:**
+   ```bash
+   php -S localhost:8000 -t public
+   ```
+
+5. **Tarayıcıda aç:**
+   - Anasayfa: `http://localhost:8000`
+   - Hakkında: `http://localhost:8000/hakkimizda`
+   - Blog: `http://localhost:8000/blog`
+   - İletişim: `http://localhost:8000/iletisim`
+   - S.S.S: `http://localhost:8000/s-s-s`
+   
+### Fallback Modu (Veritabanı Yok)
+
+Veritabanı bağlantısı başarısız olursa, sistem otomatik olarak `app/Data/*.php` dizileri kullanır.
+Bu, Faz 1 ön yüzünü herhangi bir veritabanı olmadan çalıştırmanızı sağlar.
 
 ## Klasör Yapısı
 

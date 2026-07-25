@@ -1,5 +1,137 @@
-# Phase 1 placeholder. Phase 2 adds real rewrite rules routing all
-# non-file/non-directory requests to index.php once routes/web.php exists.
+# SEO Expert Configuration - 20-year SEO optimization
+# Rewriting, caching, compression, security
+
+# ============================================================
+# Enable Rewriting
+# ============================================================
 <IfModule mod_rewrite.c>
-  RewriteEngine On
+    RewriteEngine On
+    RewriteBase /
+
+    # Remove trailing slashes (except for directories)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+    # Add trailing slash to directories
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^(.+)$ /$1/ [L,R=301]
+
+    # Route all requests to index.php (except real files/dirs)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [L,QSA]
+
+    # HTTPS redirect (uncomment on production)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # WWW redirect (choose one)
+    # Redirect to www version
+    # RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
+    # RewriteRule ^(.*)$ https://www.example.com/$1 [L,R=301]
+
+    # OR remove www
+    # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    # RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+</IfModule>
+
+# ============================================================
+# Gzip Compression (Performance)
+# ============================================================
+<IfModule mod_deflate.c>
+    AddType application/javascript js
+    AddType text/css css
+    AddType text/html html
+
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript image/svg+xml
+    </IfModule>
+</IfModule>
+
+# ============================================================
+# Browser Caching (Core Web Vitals)
+# ============================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 2 days"
+
+    # Cache images for 1 month
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+
+    # Cache CSS and JS for 1 year (fingerprint in filename)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+    ExpiresByType application/x-font-otf "access plus 1 year"
+
+    # Short cache for HTML (let browser validate)
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# ============================================================
+# Disable ETags (use Last-Modified instead)
+# ============================================================
+<IfModule mod_headers.c>
+    Header unset ETag
+    FileETag None
+    Header always set Cache-Control "public, max-age=0, must-revalidate"
+</IfModule>
+
+# ============================================================
+# Security Headers
+# ============================================================
+<IfModule mod_headers.c>
+    # Prevent MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Feature policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # CSP (adjust as needed)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' www.google-analytics.com www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+</IfModule>
+
+# ============================================================
+# SEO Friendly URLs & Redirects
+# ============================================================
+# Redirect old URLs if needed (example - uncomment and modify)
+# <IfModule mod_rewrite.c>
+#     RedirectMatch 301 ^/eski-sayfa$ /yeni-sayfa
+# </IfModule>
+
+# ============================================================
+# Access Control
+# ============================================================
+# Prevent access to sensitive files
+<FilesMatch "\.(env|htaccess|json|php)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# ============================================================
+# UTF-8 Encoding
+# ============================================================
+AddDefaultCharset utf-8
+<IfModule mod_mime.c>
+    AddCharset utf-8 .css
+    AddCharset utf-8 .js
+    AddCharset utf-8 .html
 </IfModule>

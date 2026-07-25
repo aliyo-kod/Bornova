@@ -16,7 +16,12 @@ use App\Models\{HeroSlider, Service, Review, Video, Post, Faq, SiteConfig};
 $router = new Router();
 
 // Load route definitions
-require __DIR__ . '/../routes/web.php';
+$currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+if (strpos($currentPath, '/admin') === 0) {
+    require __DIR__ . '/../routes/admin.php';
+} else {
+    require __DIR__ . '/../routes/web.php';
+}
 
 $currentPath = $router->getPath();
 

@@ -24,17 +24,54 @@ $router->get('/hizmetler', function () {
     require __DIR__ . '/../app/Views/pages/services.php';
 });
 
-// Service Detail
+// Service Detail (main service and subcategories)
 $router->get('/hizmet/{slug}', function ($slug) {
-    global $site, $navItems;
-    $service = \App\Models\Service::query()->where('slug', '=', $slug)->first();
+    global $site, $navItems, $services, $serviceSubcategories, $blogPosts, $faqs;
+    $service = null;
+    foreach ($services as $svc) {
+        if ($svc['slug'] === $slug) {
+            $service = $svc;
+            break;
+        }
+    }
     if (!$service) {
         header('HTTP/1.1 404 Not Found');
         require __DIR__ . '/../public/404.php';
         return;
     }
-    $service = $service->toArray();
+    $subcategories = $serviceSubcategories[$slug] ?? [];
     require __DIR__ . '/../app/Views/pages/service-detail.php';
+});
+
+// Service Subcategory Detail
+$router->get('/hizmet/{slug}/{subslug}', function ($slug, $subslug) {
+    global $site, $navItems, $services, $serviceSubcategories, $blogPosts, $faqs;
+    $service = null;
+    foreach ($services as $svc) {
+        if ($svc['slug'] === $slug) {
+            $service = $svc;
+            break;
+        }
+    }
+    if (!$service) {
+        header('HTTP/1.1 404 Not Found');
+        require __DIR__ . '/../public/404.php';
+        return;
+    }
+    $subcategories = $serviceSubcategories[$slug] ?? [];
+    $subcategory = null;
+    foreach ($subcategories as $sub) {
+        if ($sub['slug'] === $subslug) {
+            $subcategory = $sub;
+            break;
+        }
+    }
+    if (!$subcategory) {
+        header('HTTP/1.1 404 Not Found');
+        require __DIR__ . '/../public/404.php';
+        return;
+    }
+    require __DIR__ . '/../app/Views/pages/service-subcategory-detail.php';
 });
 
 // Regions
@@ -59,32 +96,37 @@ $router->get('/bolge/{slug}', function ($slug) {
 
 // Blog List
 $router->get('/blog', function () {
-    global $site, $navItems;
+    global $site, $navItems, $blogPosts;
     $page = (int)($_GET['page'] ?? 1);
     $perPage = 12;
-    $paginated = \App\Models\Post::query()
-        ->where('is_published', '=', true)
-        ->orderBy('published_at', 'DESC')
-        ->paginate($page, $perPage);
-    $blogPosts = array_map(fn($p) => $p->toArray(), $paginated['data']);
+    $posts = array_filter($blogPosts, fn($p) => $p['published'] ?? true);
+    $total = count($posts);
+    $totalPages = ceil($total / $perPage);
+    $offset = ($page - 1) * $perPage;
+    $posts = array_slice($posts, $offset, $perPage);
     $pagination = [
-        'current_page' => $paginated['current_page'],
-        'total_pages' => $paginated['last_page'],
-        'total_posts' => $paginated['total'],
+        'current_page' => $page,
+        'total_pages' => $totalPages,
+        'total_posts' => $total,
     ];
     require __DIR__ . '/../app/Views/pages/blog-list.php';
 });
 
 // Blog Detail
 $router->get('/blog/{slug}', function ($slug) {
-    global $site, $navItems;
-    $post = \App\Models\Post::query()->where('slug', '=', $slug)->first();
+    global $site, $navItems, $blogPosts;
+    $post = null;
+    foreach ($blogPosts as $p) {
+        if ($p['slug'] === $slug) {
+            $post = $p;
+            break;
+        }
+    }
     if (!$post) {
         header('HTTP/1.1 404 Not Found');
         require __DIR__ . '/../public/404.php';
         return;
     }
-    $post = $post->toArray();
     require __DIR__ . '/../app/Views/pages/blog-detail.php';
 });
 

@@ -36,8 +36,9 @@ if (true) {
     $services    = require $dataPath . 'services.php';
     $reviews     = require $dataPath . 'reviews.php';
     $videos      = require $dataPath . 'videos.php';
-    $blogPosts   = require $dataPath . 'blog.php';
+    $blogPosts   = require $dataPath . 'blog-posts.php';
     $faqs        = require $dataPath . 'faqs.php';
+    $serviceSubcategories = require $dataPath . 'service-subcategories.php';
 }
 
 // Route to appropriate view

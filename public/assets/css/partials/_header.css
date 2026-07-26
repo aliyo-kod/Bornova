@@ -60,14 +60,12 @@
   gap: 10px;
   flex-shrink: 0;
 }
-.brand__logo {
-  width: 42px; height: 42px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  background: var(--color-blue-100);
-  color: var(--color-blue-500);
+.brand__logo-img {
+  max-height: 45px;
+  width: auto;
+  display: flex;
+  align-items: center;
 }
-.brand__logo .icon { width: 22px; height: 22px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand__title { font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; color: var(--color-navy-900); }
 .brand__subtitle { font-size: 0.65rem; font-weight: 700; letter-spacing: .06em; color: var(--color-blue-600); }

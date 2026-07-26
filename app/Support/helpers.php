@@ -33,7 +33,7 @@ if (!function_exists('phone_href')) {
     }
 }
 
-if (!function_exists('slugify_active')) {
+if (!function_exists('is_active_url')) {
     function is_active_url(string $url, string $currentPath): bool
     {
         if ($url === '/') {

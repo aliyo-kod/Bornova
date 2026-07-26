@@ -11,10 +11,10 @@
           <a href="/blog" class="section-head__link">Tüm Yazılar</a>
         </div>
         <div class="blog-col__grid">
-          <?php foreach ($blogPosts as $post): ?>
+          <?php foreach ($blogPosts as $idx => $post): ?>
             <article class="blog-card">
-              <a href="/blog/<?= e($post['slug']) ?>" class="blog-card__image" data-placeholder="true">
-                <?= icon($post['icon'], 'blog-card__image-icon') ?>
+              <a href="/blog/<?= e($post['slug']) ?>" class="blog-card__image">
+                <img src="/assets/img/blog-<?= $idx + 1 ?>.png" alt="<?= e($post['title']) ?>" style="width: 100%; height: 100%; object-fit: cover;">
               </a>
               <p class="blog-card__date"><?= e($post['date']) ?></p>
               <h3 class="blog-card__title"><a href="/blog/<?= e($post['slug']) ?>"><?= e($post['title']) ?></a></h3>

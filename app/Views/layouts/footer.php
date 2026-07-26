@@ -26,11 +26,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
         <a href="/" class="brand brand--footer">
-          <span class="brand__logo"><?= icon('icon-drop') ?></span>
-          <span class="brand__text">
-            <span class="brand__title">BORNOVA</span>
-            <span class="brand__subtitle">SU KAÇAK TESPİTİ</span>
-          </span>
+          <img src="/assets/img/logo-footer.png" alt="Bornova Su Kaçak Tespiti Logo" class="brand__logo-img" style="height: 50px; width: auto;">
         </a>
         <p class="footer-col__desc">Bornova ve çevresinde kırmadan, dökmeden su kaçağı tespiti hizmeti sunuyoruz.</p>
         <div class="footer-social">

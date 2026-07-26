@@ -38,11 +38,7 @@ $currentPath = $currentPath ?? '/';
 <header class="site-header" id="site-header">
   <div class="container-xl site-header__inner">
     <a href="/" class="brand">
-      <span class="brand__logo"><?= icon('icon-drop') ?></span>
-      <span class="brand__text">
-        <span class="brand__title">BORNOVA</span>
-        <span class="brand__subtitle">SU KAÇAK TESPİTİ</span>
-      </span>
+      <img src="/assets/img/logo-header.png" alt="Bornova Su Kaçak Tespiti Logo" class="brand__logo-img" style="height: 45px; width: auto;">
     </a>
 
     <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menüyü aç/kapat">

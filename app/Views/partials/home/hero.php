@@ -26,9 +26,8 @@ $slide = $heroSlides[0];
     </div>
 
     <div class="hero__media">
-      <div class="hero__photo" data-placeholder="true">
-        <?= icon('icon-search-wave', 'hero__photo-icon') ?>
-        <!-- TODO: replace with real technician photo via admin media manager -->
+      <div class="hero__photo">
+        <img src="/assets/img/hero-technician.png" alt="Su kaçağı tespiti yapan profesyonel teknisyen" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <div class="hero__stat-card">
         <ul>

@@ -25,44 +25,8 @@ if (strpos($currentPath, '/admin') === 0) {
 
 $currentPath = $router->getPath();
 
-// Try to load from database; fallback to Phase 1 data arrays
-$useDatabase = false;
-try {
-    if (class_exists('App\Database\Connection')) {
-        $useDatabase = true;
-    }
-} catch (\Exception $e) {
-    // Database not available, use Phase 1 data arrays
-}
-
-if ($useDatabase) {
-    // Phase 2: Load data from database models
-    try {
-        $site = [
-            'name' => SiteConfig::get('site_name', 'Bornova Su Kaçak Tespiti'),
-            'description' => SiteConfig::get('site_description', ''),
-            'phone' => SiteConfig::get('phone', ''),
-            'whatsapp' => SiteConfig::get('whatsapp', ''),
-            'email' => SiteConfig::get('email', ''),
-            'location' => SiteConfig::get('location', ''),
-            'working_hours' => SiteConfig::get('working_hours', []),
-            'google_reviews_verified' => SiteConfig::get('google_reviews_verified', false),
-        ];
-
-        $heroSlides = array_map(fn($h) => $h->toArray(), HeroSlider::active());
-        $services = array_map(fn($s) => $s->toArray(), Service::active());
-        $reviews = array_map(fn($r) => $r->toArray(), Review::featured());
-        $videos = array_map(fn($v) => $v->toArray(), Video::active());
-        $blogPosts = array_map(fn($p) => $p->toArray(), Post::featured());
-        $faqs = array_map(fn($f) => $f->toArray(), Faq::active());
-        $navItems = require __DIR__ . '/../app/Data/nav.php'; // Navigation stays static for now
-    } catch (\Exception $e) {
-        // Fallback to Phase 1 data if database query fails
-        $useDatabase = false;
-    }
-}
-
-if (!$useDatabase) {
+// For now, use Phase 1 data arrays (database integration in Phase 2+)
+if (true) {
     // Phase 1: Load plain-array data sources
     $dataPath = __DIR__ . '/../app/Data/';
 

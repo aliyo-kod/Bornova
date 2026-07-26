@@ -77,21 +77,7 @@ $router->get('/hizmet/{slug}/{subslug}', function ($slug, $subslug) {
 // Regions
 $router->get('/bolgeler', function () {
     global $site, $navItems;
-    $regions = \App\Models\Region::query()->where('is_active', '=', true)->get();
     require __DIR__ . '/../app/Views/pages/regions.php';
-});
-
-// Region Detail
-$router->get('/bolge/{slug}', function ($slug) {
-    global $site, $navItems;
-    $region = \App\Models\Region::query()->where('slug', '=', $slug)->first();
-    if (!$region) {
-        header('HTTP/1.1 404 Not Found');
-        require __DIR__ . '/../public/404.php';
-        return;
-    }
-    $region = $region->toArray();
-    require __DIR__ . '/../app/Views/pages/region-detail.php';
 });
 
 // Blog List
@@ -132,19 +118,13 @@ $router->get('/blog/{slug}', function ($slug) {
 
 // FAQ Page
 $router->get('/s-s-s', function () {
-    global $site, $navItems;
-    $faqs = \App\Models\Faq::query()->where('is_active', '=', true)->get();
-    $faqs = array_map(fn($f) => $f->toArray(), $faqs);
+    global $site, $navItems, $faqs;
     require __DIR__ . '/../app/Views/pages/faq.php';
 });
 
 // Reviews
 $router->get('/yorumlar', function () {
-    global $site, $navItems;
-    $reviews = \App\Models\Review::query()
-        ->orderBy('order_index', 'ASC')
-        ->get();
-    $reviews = array_map(fn($r) => $r->toArray(), $reviews);
+    global $site, $navItems, $reviews;
     require __DIR__ . '/../app/Views/pages/reviews.php';
 });
 

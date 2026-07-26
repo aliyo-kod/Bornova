@@ -5,9 +5,12 @@
 return [
     [
         'slug'  => 'su-kacagi-tespiti',
+        'name'  => 'Su Kaçağı Tespiti',
+        'title' => 'Su Kaçağı Tespiti',
+        'description' => 'Bornova ve çevresinde kırmadan su kaçağı tespiti hizmetleri. Termal kamera, akustik dinleme ve basınç testi gibi modern teknolojilerle su kaçaklarını tespit ediyoruz.',
+        'keywords' => 'su kaçağı tespiti, kırmadan tespit, termal kamera, akustik dinleme, su basınç testi',
         'color' => 'blue',
         'icon'  => 'icon-search-wave',
-        'title' => 'Su Kaçağı Tespiti',
         'image_icon' => 'icon-drop',
         'items' => [
             'Kırmadan Su Kaçağı Tespiti',
@@ -20,9 +23,12 @@ return [
     ],
     [
         'slug'  => 'tikaniklik-acma',
+        'name'  => 'Tıkanıklık Açma',
+        'title' => 'Tıkanıklık Açma',
+        'description' => 'Lavabo, tuvalet, gider ve kanallarda oluşan tıkanıklıkları profesyonel ekipmanlarla hızlı şekilde açıyoruz. Kamera ile tespiti ve jetting hizmetleri sunuyoruz.',
+        'keywords' => 'tıkanıklık açma, lavabo tıkanıklığı, tuvalet tıkanıklığı, gider tıkanıklığı, kanal temizliği',
         'color' => 'green',
         'icon'  => 'icon-plunger',
-        'title' => 'Tıkanıklık Açma',
         'image_icon' => 'icon-pipe',
         'items' => [
             'Lavabo Tıkanıklığı Açma',
@@ -35,9 +41,12 @@ return [
     ],
     [
         'slug'  => 'tesisat-kurulumu',
+        'name'  => 'Tesisat Kurulumu',
+        'title' => 'Tesisat Kurulumu',
+        'description' => 'Temiz su, pis su, doğalgaz, kalorifer ve bahçe sulama tesisatı kurulumu hizmetleri. Tadilat ve renovasyon projelerinizde tesisat uzmanı olarak yanınız da variz.',
+        'keywords' => 'tesisat kurulumu, su tesisat, gaz tesisat, kalorifer, bahçe sulama, tadilat',
         'color' => 'orange',
         'icon'  => 'icon-pipe',
-        'title' => 'Tesisat Kurulumu',
         'image_icon' => 'icon-pipe',
         'items' => [
             'Temiz Su Tesisatı',
@@ -50,9 +59,12 @@ return [
     ],
     [
         'slug'  => 'petek-kombi',
+        'name'  => 'Petek / Kombi',
+        'title' => 'Petek / Kombi',
+        'description' => 'Kombi bakım, onarım, petek temizliği ve montaj hizmetleri. Enerji tasarrufu ve optimal ısıtma için profesyonel servis.',
+        'keywords' => 'kombi bakımı, petek temizliği, kombi onarım, radyatör, ısıtma',
         'color' => 'purple',
         'icon'  => 'icon-radiator',
-        'title' => 'Petek / Kombi',
         'image_icon' => 'icon-radiator',
         'items' => [
             'Kombi Bakım ve Onarım',

@@ -163,39 +163,18 @@ $router->post('/iletisim', function () {
 // Privacy Policy
 $router->get('/gizlilik', function () {
     global $site, $navItems;
-    $page = \App\Models\Page::query()->where('slug', '=', 'gizlilik')->first();
-    if (!$page) {
-        header('HTTP/1.1 404 Not Found');
-        require __DIR__ . '/../public/404.php';
-        return;
-    }
-    $page = $page->toArray();
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 
 // KVKK (Personal Data Protection)
 $router->get('/kvkk', function () {
     global $site, $navItems;
-    $page = \App\Models\Page::query()->where('slug', '=', 'kvkk')->first();
-    if (!$page) {
-        header('HTTP/1.1 404 Not Found');
-        require __DIR__ . '/../public/404.php';
-        return;
-    }
-    $page = $page->toArray();
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 
 // Terms of Service
 $router->get('/sitenin-kullanici-sozlesmesi', function () {
     global $site, $navItems;
-    $page = \App\Models\Page::query()->where('slug', '=', 'sitenin-kullanici-sozlesmesi')->first();
-    if (!$page) {
-        header('HTTP/1.1 404 Not Found');
-        require __DIR__ . '/../public/404.php';
-        return;
-    }
-    $page = $page->toArray();
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 

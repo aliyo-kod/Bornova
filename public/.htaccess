@@ -120,8 +120,8 @@
 # ============================================================
 # Access Control
 # ============================================================
-# Prevent access to sensitive files
-<FilesMatch "\.(env|htaccess|json|php)$">
+# Prevent access to sensitive config/dotfiles (index.php/404.php must stay reachable)
+<FilesMatch "\.(env|htaccess|json|sql|log)$">
     Order Deny,Allow
     Deny from all
 </FilesMatch>

@@ -5,6 +5,11 @@
  */
 return [
     'site_name'        => 'Bornova Su Kaçak Tespiti',
+    // Aliases used by service/blog/legal page templates (same values as above).
+    'name'             => 'Bornova Su Kaçak Tespiti',
+    'tagline'          => 'Bornova ve çevresinde kırmadan, dökmeden su kaçağı tespiti ve tesisat hizmeti sunuyoruz.',
+    'url'              => 'https://bornovakacaksutespiti.com',
+    'phone'            => '0232 123 45 67',
     'phone_display'    => '0232 123 45 67',
     'phone_tel'        => '+902321234567',
     'phone_secondary'  => '0532 123 45 67',

@@ -135,11 +135,11 @@
                     <?php foreach ($post['faq'] as $idx => $faqItem): ?>
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false" data-toggle="faq-<?= $idx ?>">
-                            <span><?= e($faqItem['question']) ?></span>
+                            <span><?= e($faqItem['q']) ?></span>
                             <span class="faq-question__toggle">▼</span>
                         </button>
                         <div class="faq-answer" id="faq-<?= $idx ?>" hidden="true">
-                            <?= $faqItem['answer'] ?>
+                            <?= $faqItem['a'] ?>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -222,10 +222,10 @@
             'mainEntity' => array_map(function($item) {
                 return [
                     '@type' => 'Question',
-                    'name' => $item['question'],
+                    'name' => $item['q'],
                     'acceptedAnswer' => [
                         '@type' => 'Answer',
-                        'text' => strip_tags($item['answer'])
+                        'text' => strip_tags($item['a'])
                     ]
                 ];
             }, $post['faq'])

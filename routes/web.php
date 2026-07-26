@@ -14,7 +14,7 @@ use App\Router\Router;
 
 // About
 $router->get('/hakkimizda', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/about.php';
 });
 
@@ -76,13 +76,13 @@ $router->get('/hizmet/{slug}/{subslug}', function ($slug, $subslug) {
 
 // Regions
 $router->get('/bolgeler', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/regions.php';
 });
 
 // Blog List
 $router->get('/blog', function () {
-    global $site, $navItems, $blogPosts;
+    global $site, $navItems, $blogPosts, $services;
     $page = (int)($_GET['page'] ?? 1);
     $perPage = 12;
     $posts = array_filter($blogPosts, fn($p) => $p['published'] ?? true);
@@ -100,7 +100,7 @@ $router->get('/blog', function () {
 
 // Blog Detail
 $router->get('/blog/{slug}', function ($slug) {
-    global $site, $navItems, $blogPosts;
+    global $site, $navItems, $blogPosts, $services;
     $post = null;
     foreach ($blogPosts as $p) {
         if ($p['slug'] === $slug) {
@@ -118,19 +118,19 @@ $router->get('/blog/{slug}', function ($slug) {
 
 // FAQ Page
 $router->get('/s-s-s', function () {
-    global $site, $navItems, $faqs;
+    global $site, $navItems, $faqs, $services;
     require __DIR__ . '/../app/Views/pages/faq.php';
 });
 
 // Reviews
 $router->get('/yorumlar', function () {
-    global $site, $navItems, $reviews;
+    global $site, $navItems, $reviews, $services;
     require __DIR__ . '/../app/Views/pages/reviews.php';
 });
 
 // Contact - GET shows form
 $router->get('/iletisim', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/contact.php';
 });
 
@@ -142,19 +142,19 @@ $router->post('/iletisim', function () {
 
 // Privacy Policy
 $router->get('/gizlilik', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 
 // KVKK (Personal Data Protection)
 $router->get('/kvkk', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 
 // Terms of Service
 $router->get('/sitenin-kullanici-sozlesmesi', function () {
-    global $site, $navItems;
+    global $site, $navItems, $services;
     require __DIR__ . '/../app/Views/pages/legal.php';
 });
 
